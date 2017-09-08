@@ -108,7 +108,7 @@ gulp.task('watch', ['clean'], () => {
 
 gulp.task('browser', ()=> {
     browserSync.init({
-        port: 8031,
+        port: 8030,
         open: false,
         server: {
             directory: true,

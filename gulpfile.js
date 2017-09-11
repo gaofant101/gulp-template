@@ -27,7 +27,7 @@ const moveFile = {
     js: 'src/js/*.min.js',
 }
 const config = {
-    cssSrc: 'src/styles/*.scss',
+    cssSrc: ['src/styles/*.scss', 'src/styles/*.css'],
     cssDist: dist + '/styles',
     cssRev: 'rev/styles',
     jsSrc: ['src/js/*.js', '!src/js/*.min.js'],

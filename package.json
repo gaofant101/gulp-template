@@ -28,6 +28,7 @@
     "gulp-rev-collector": "1.2.2",
     "gulp-sass": "3.1.0",
     "gulp-uglify": "3.0.0",
+    "http-proxy-middleware": "0.17.4",
     "jshint": "2.9.5",
     "node-sass": "4.5.3",
     "postcss-px2rem": "0.3.0",

@@ -51,16 +51,28 @@ const config = {
 ```
 
 ```javascript
-// 修改服务配置
+// 修改服务配置, 使用代理
 
 gulp.task('browser', ()=> {
+    const middleware = proxy(
+        '/proxyText',
+        {
+            target: 'targeturl',
+            changeOrigin: true,
+            logLevel: 'debug',
+            ws: true,
+            secure: false,
+        }
+    );
     browserSync.init({
-        port: 8030,
+        port: 8031,
+        https: true,
         open: false,
         server: {
             directory: true,
             baseDir: 'dist/',
         },
+        middleware: [middleware],
     });
     gulp.watch(dist + '/*.html').on('change', reload);
 });

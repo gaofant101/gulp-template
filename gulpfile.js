@@ -19,7 +19,8 @@ const revCollector  = require('gulp-rev-collector');
 const minifyHTML    = require('gulp-htmlmin');
 const del           = require('del');
 const browserSync   = require('browser-sync').create();
-const reload    = browserSync.reload;
+const reload        = browserSync.reload;
+const proxy         = require('http-proxy-middleware');
 
 const isProd = process.env.NODE_ENV === 'production';
 const dist = isProd ? 'build' : 'dist';
@@ -107,13 +108,25 @@ gulp.task('watch', ['clean'], () => {
 });
 
 gulp.task('browser', ()=> {
+    const middleware = proxy(
+        '/proxyText',
+        {
+            target: 'targeturl',
+            changeOrigin: true,
+            logLevel: 'debug',
+            ws: true,
+            secure: false,
+        }
+    );
     browserSync.init({
-        port: 8030,
+        port: 8031,
+        https: true,
         open: false,
         server: {
             directory: true,
             baseDir: 'dist/',
         },
+        middleware: [middleware],
     });
     gulp.watch(dist + '/*.html').on('change', reload);
 });

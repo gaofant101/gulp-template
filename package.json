@@ -37,7 +37,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env NODE_ENV=development gulp",
-    "build": "cross-env NODE_ENV=production gulp"
+    "build": "cross-env NODE_ENV=production gulp build"
   },
   "author": "",
   "license": "ISC"

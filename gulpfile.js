@@ -28,7 +28,7 @@ const moveFile = {
     js: 'src/js/*.min.js',
 }
 const config = {
-    cssSrc: ['src/styles/*.scss', 'src/styles/*.css'],
+    cssSrc: ['src/styles/*.scss'],
     cssDist: dist + '/styles',
     cssRev: 'rev/styles',
     jsSrc: ['src/js/*.js', '!src/js/*.min.js'],
@@ -109,9 +109,9 @@ gulp.task('watch', ['clean'], () => {
 
 gulp.task('browser', ()=> {
     const middleware = proxy(
-        '/proxyText',
+        'proxyText',
         {
-            target: 'targeturl',
+            target: 'ip:port',
             changeOrigin: true,
             logLevel: 'debug',
             ws: true,
@@ -133,6 +133,18 @@ gulp.task('browser', ()=> {
 
 gulp.task(('dev'), (done) => {
     runSequence(
+        ['styles'],
+        ['script'],
+        ['images'],
+        ['html'],
+        ['move'],
+        done
+    );
+});
+
+gulp.task(('build'), (done) => {
+    runSequence(
+        ['clean'],
         ['styles'],
         ['script'],
         ['images'],

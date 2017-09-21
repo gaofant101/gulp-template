@@ -43,7 +43,10 @@ const config = {
 
 gulp.task('styles', () => {
     const processors = [px2rem({remUnit: 75})];
-    return gulp.src(config.cssSrc)
+    return gulp.src(['rev/**/*.json', 'src/styles/*.scss'])
+        .pipe(revCollector({
+            replaceReved: true,
+        }))
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss(processors))
         .pipe(csslint())

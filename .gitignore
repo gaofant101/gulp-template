@@ -1,5 +1,5 @@
 # Don't check auto-generated stuff into git
-# build
+build
 dist
 rev
 node_modules

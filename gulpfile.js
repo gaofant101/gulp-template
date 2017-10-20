@@ -28,7 +28,7 @@ const moveFile = {
     js: 'src/js/*.min.js',
 }
 const config = {
-    cssSrc: ['src/styles/*.scss'],
+    cssSrc: ['src/styles/*.css', 'src/styles/*.scss'],
     cssDist: dist + '/styles',
     cssRev: 'rev/styles',
     jsSrc: ['src/js/*.js', '!src/js/*.min.js'],
@@ -66,7 +66,7 @@ gulp.task('script', () =>
     }))
     .pipe(jshint.reporter('default', { verbose: true }))
     .pipe(babel({
-        presets: ['es2015']
+        presets: ['env']
     }))
     // .pipe(concat('main.js'))
     .pipe(uglify())

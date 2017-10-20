@@ -78,6 +78,11 @@ gulp.task('browser', ()=> {
 });
 ```
 
+## 第三方插件
+
+- 引入 `jQuery Slim` `https://blog.jquery.com/2016/09/22/jquery-3-1-1-released/`
+- 引入 `axios` `https://github.com/axios/axios`
+
 ## 参考
 
 [gulp 中文网](http://www.gulpjs.com.cn/)   
